@@ -1,0 +1,17 @@
+from bs4 import BeautifulSoup as bs
+from pprint import pprint
+import requests
+
+html = requests.get("https://www.kyobobook.co.kr/")
+# pprint(html.text)
+
+# 웹 페이지는 HTML이라는 언어로 쓰여져있습니다. 이를 파이썬에서 쉽게 분석할 수 있도록 파싱작업을 거쳐 각 요소에 접근이 쉽게 만듭니다.
+soup = bs(html.text, 'html.parser')
+
+data1 = soup.findAll('ul', {'class':'gnb_item'})
+pprint(data1)
+
+# data2 = data1.find('strong')
+# pprint(data2)
+
+# 교보문고에서 텍스트를 가져오려면 아무튼 웹스크래핑 기술이 필요하다 ... 근데 이상하게 잘 안되는 탓에 일단 오늘은 패쓰
