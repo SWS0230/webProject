@@ -1,0 +1,28 @@
+<!-- 책을 추천해주는 사이트를 만들겁니다. 가장 기본적으로는 1.추천받고 싶은 분야 입력 2.교보문고, 알라딘, Yes24 등 각종 도서 사이트에서 해당 분야 베스트셀러 10권을 추출 3. 추출한 책들을 다시 출력. 간단하죠? -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>책 추천 사이트</title>
+</head>
+<body>
+  <!-- 1. 우선 "분야 옆 체크박스를 체크하면, 즉시 해당 라벨이 출력되게 하자" -->
+  책을 추천해드리겠습니다. 분야를 설정해주세요 : 1.소설 2.IT 3.경제
+    <input type="checkbox" id="novel" name="novel" value='novel' onclick='getCheckboxValue()' />
+    소설
+
+    <input type="checkbox" id="computer" name="computer" value='IT' onclick='getCheckboxValue()' />
+    <label for="computer">IT</label>
+
+    <input type="checkbox" id="economy" name="economy" value='economy' onclick='getCheckboxValue()' />
+    <label for="economy">경제</label>
+  <!-- 2. 각종 도서 사이트에서 '베스트셀러 10권을 추출'하려면 웹 스크래핑 기술이 필요하다..! -->
+
+  <div id='result'></div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
