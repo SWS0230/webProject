@@ -18,11 +18,11 @@ ypbooks_url = 'https://www.ypbooks.co.kr/bestseller/week'
 
 yes24_req = requests.get(yes24_url)
 aladin_req = requests.get(aladin_url)
-ypbooks_req = requests.get(ypbooks_url)
+# ypbooks_req = requests.get(ypbooks_url)
 
 yes24_content = yes24_req.content
 aladin_content = aladin_req.content
-ypbooks_content = ypbooks_req.content
+# ypbooks_content = ypbooks_req.content
 
 # 기본적으로 requests만 쓰실 거라면 text가 더 좋을 수 있습니다.
 # 하지만 대부분의 사람들은 requests만 쓰지 않고 BeautifulSoup라는 모듈과 같이 사용합니다.
@@ -31,7 +31,7 @@ ypbooks_content = ypbooks_req.content
 # bs4로 넘기기(soup화)
 yes24_soup = bs(yes24_content, 'html.parser')
 aladin_soup = bs(aladin_content, 'html.parser')
-ypbooks_soup = bs(ypbooks_content, 'html.parser')
+# ypbooks_soup = bs(ypbooks_content, 'html.parser')
 
 # yes24 주간 베스트셀러 상위 10개 도서 가져오기
 # 근데 이거 맞냐? 반복문 쓰면 더 나아질 거 같은데.
@@ -122,21 +122,21 @@ print(aladin_Book10)
 # 열 : -, 알라딘, yes24 / 행 : -, 1, 2, ..., 10
 
 df_Books = pd.DataFrame({'yes24':[yes24_Book1, yes24_Book2, yes24_Book3, yes24_Book4, yes24_Book5, yes24_Book6, yes24_Book7, yes24_Book8, yes24_Book9, yes24_Book10], 
-                         'aladin':[aladin_Book1, aladin_Book2, aladin_Book3, aladin_Book4, aladin_Book6, aladin_Book7, aladin_Book8, aladin_Book9, aladin_Book10]})
+                         'aladin':[aladin_Book1, aladin_Book2, aladin_Book3, aladin_Book4, aladin_Book5, aladin_Book6, aladin_Book7, aladin_Book8, aladin_Book9, aladin_Book10]})
 
 
 df_Books.to_csv('BookCsv.csv')
 
 # https://ealuuu.tistory.com/13 -> 이건 별개인데, replit run을 눌러도 실행이 안되는 경우 이렇게 하면 된다.
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route('/')
-def index():
-  df = pd.read_csv('BookCsv.csv')
+# @app.route('/')
+# def index():
+#   bookDf = pd.read_csv('BookCsv.csv')
 
-  table_html = df.to_html(classes = 'table table-striped')
-  return render_template('index.html', table=table_html)
+#   table_html = bookDf.to_html(classes = 'table table-striped')
+#   return render_template('index.html', table=table_html)
 
-if __name__ == '__main__':
-  app.run(debug=True)
+# if __name__ == '__main__':
+#   app.run(debug=True)
