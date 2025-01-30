@@ -1,0 +1,28 @@
+name: Weekly Book List
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 00:00에 실행
+  workflow_dispatch: # 수동 실행을 원할 때 사용
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # 사용할 Python 버전 (예: 3.8, 3.9, 3.x 등)
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # 필요한 패키지가 있다면 requirements.txt에 명시
+
+      - name: Run main.py
+        run: |
+          python main.py
